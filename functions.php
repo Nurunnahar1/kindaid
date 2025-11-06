@@ -1,5 +1,5 @@
 <?php
-if (! function_exists('kindaid_setup')):
+if (!function_exists('kindaid_setup')):
     /**
      * Sets up theme defaults and registers support for various WordPress features.
      *
@@ -9,8 +9,12 @@ if (! function_exists('kindaid_setup')):
      *
      * @since Twenty Fifteen 1.0
      */
+
+
+
+
     function kindaid_setup()
-{
+    {
         /*
          * Make theme available for translation.
          * Translations can be filed in the /languages/ directory.
@@ -29,12 +33,12 @@ if (! function_exists('kindaid_setup')):
          */
         add_theme_support('post-thumbnails');
 
-        	// This theme uses wp_nav_menu() in two locations.
-        	register_nav_menus(
-        	array(
-        	'main-menu' => __( 'Main Menu', 'kindaid' ),
-        	)
-        	);
+        // This theme uses wp_nav_menu() in two locations.
+        register_nav_menus(
+            array(
+                'main-menu' => __('Main Menu', 'kindaid'),
+            )
+        );
 
         /*
          * Let WordPress manage the document title.
@@ -46,7 +50,7 @@ if (! function_exists('kindaid_setup')):
 
         // This theme uses wp_nav_menu() in two locations.
         register_nav_menus([
-            'main_menu' => __('Main Menu', 'kindaid'), 
+            'main_menu' => __('Main Menu', 'kindaid'),
         ]);
 
         /*
@@ -54,7 +58,11 @@ if (! function_exists('kindaid_setup')):
          * to output valid HTML5.
          */
         add_theme_support('html5', [
-            'search-form', 'comment-form', 'comment-list', 'gallery', 'caption',
+            'search-form',
+            'comment-form',
+            'comment-list',
+            'gallery',
+            'caption',
         ]);
 
         /*
@@ -63,7 +71,12 @@ if (! function_exists('kindaid_setup')):
          * See: https://codex.wordpress.org/Post_Formats
          */
         add_theme_support('post-formats', [
-            'image', 'video', 'quote', 'gallery', 'audio', 'chat',
+            'image',
+            'video',
+            'quote',
+            'gallery',
+            'audio',
+            'chat',
         ]);
     }
 endif; // kindaid_setup
@@ -72,15 +85,35 @@ add_action('after_setup_theme', 'kindaid_setup');
 function kindaide_scripts()
 {
     //css
-    wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', [], '5.3.8',
-        'all');
+    wp_enqueue_style(
+        'bootstrap',
+        get_template_directory_uri() . '/assets/css/bootstrap.min.css',
+        [],
+        '5.3.8',
+        'all'
+    );
     wp_enqueue_style('animate', get_template_directory_uri() . '/assets/css/animate.css', [], '1.0', 'all');
-    wp_enqueue_style('swiper-bundle', get_template_directory_uri() . '/assets/css/swiper-bundle.css', [], '6.5.0',
-        'all');
-    wp_enqueue_style('magnific-popup', get_template_directory_uri() . '/assets/css/magnific-popup.css', [], '1.0',
-        'all');
-    wp_enqueue_style('font-awesome-pro', get_template_directory_uri() . '/assets/css/font-awesome-pro.css', [],
-        '6.0.0', 'all');
+    wp_enqueue_style(
+        'swiper-bundle',
+        get_template_directory_uri() . '/assets/css/swiper-bundle.css',
+        [],
+        '6.5.0',
+        'all'
+    );
+    wp_enqueue_style(
+        'magnific-popup',
+        get_template_directory_uri() . '/assets/css/magnific-popup.css',
+        [],
+        '1.0',
+        'all'
+    );
+    wp_enqueue_style(
+        'font-awesome-pro',
+        get_template_directory_uri() . '/assets/css/font-awesome-pro.css',
+        [],
+        '6.0.0',
+        'all'
+    );
     wp_enqueue_style('kindaid-spacing', get_template_directory_uri() . '/assets/css/spacing.css', [], '1.0', 'all');
     wp_enqueue_style('kindaid-main', get_template_directory_uri() . '/assets/css/main.css', [], '1.0', 'all');
     wp_enqueue_style('style', get_stylesheet_uri());
@@ -91,16 +124,41 @@ function kindaide_scripts()
     wp_enqueue_script('magnific-popup', get_template_directory_uri() . '/assets/js/magnific-popup.js', ['jquery'], '1.1.0', true);
     wp_enqueue_script('nice-select', get_template_directory_uri() . '/assets/js/nice-select.js', ['jquery'], '1.0', true);
     wp_enqueue_script('purecounter', get_template_directory_uri() . '/assets/js/purecounter.js', ['jquery'], '1.5.0', true);
-    wp_enqueue_script('range-slider', get_template_directory_uri() . '/assets/js/range-slider.js',
-        ['jquery'], '1.12.1', true);
-    wp_enqueue_script('parallax', get_template_directory_uri() . '/assets/js/parallax.js',
-        ['jquery'], '1.0', true);
-    wp_enqueue_script('parallax-scroll', get_template_directory_uri() . '/assets/js/parallax-scroll.js',
-        ['jquery'], '1.0', true);
-    wp_enqueue_script('wow', get_template_directory_uri() . '/assets/js/wow.min.js',
-        ['jquery'], '1.0', true);
-    wp_enqueue_script('kindaid-slider-init', get_template_directory_uri() . '/assets/js/slider-init.js',
-        ['jquery'], '1.0', true);
+    wp_enqueue_script(
+        'range-slider',
+        get_template_directory_uri() . '/assets/js/range-slider.js',
+        ['jquery'],
+        '1.12.1',
+        true
+    );
+    wp_enqueue_script(
+        'parallax',
+        get_template_directory_uri() . '/assets/js/parallax.js',
+        ['jquery'],
+        '1.0',
+        true
+    );
+    wp_enqueue_script(
+        'parallax-scroll',
+        get_template_directory_uri() . '/assets/js/parallax-scroll.js',
+        ['jquery'],
+        '1.0',
+        true
+    );
+    wp_enqueue_script(
+        'wow',
+        get_template_directory_uri() . '/assets/js/wow.min.js',
+        ['jquery'],
+        '1.0',
+        true
+    );
+    wp_enqueue_script(
+        'kindaid-slider-init',
+        get_template_directory_uri() . '/assets/js/slider-init.js',
+        ['jquery'],
+        '1.0',
+        true
+    );
     wp_enqueue_script('kindaid-main', get_template_directory_uri() . '/assets/js/main.js', ['jquery'], '1.0', true);
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
@@ -109,8 +167,8 @@ function kindaide_scripts()
 
 
 
-    if ( ! class_exists( 'Kirki' ) ) {
-    return;
+    if (!class_exists('Kirki')) {
+        return;
     }
 }
 
@@ -119,11 +177,18 @@ add_action('wp_enqueue_scripts', 'kindaide_scripts');
 
 //kindaid required files
 include_once('include/nav-walker.php');
+
+if (function_exists('tpmeta_field')) {
+    include_once('include/kindaid-metafields.php');
+}
+
 include_once('include/theme-helper.php');
 
-function kindaid_kirky(){
-    if(class_exists('Kirki')){
-      include_once('include/kindaid-kirki.php');
+
+function kindaid_kirky()
+{
+    if (class_exists('Kirki')) {
+        include_once('include/kindaid-kirki.php');
     }
 }
 add_action('init', 'kindaid_kirky');

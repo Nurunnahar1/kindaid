@@ -23,6 +23,33 @@ function header_info()
             'priority' => 160,
         ]
     );
+    new \Kirki\Field\Select(
+        [
+            'settings' => 'header_global',
+            'label' => esc_html__('Select Your Default Header', 'kirki'),
+            'section' => 'header_info',
+            'default' => 'header_global_1', 
+            'placeholder' => esc_html__('Choose a Header', 'kirki'),
+            'choices' => [
+                'header_global_1' => esc_html__('Header One', 'kirki'),  
+                'header_global_2' => esc_html__('Header Two', 'kirki'),  
+                'header_global_3' => esc_html__('Header Three', 'kirki'), 
+            ],
+        ]
+    );
+    new \Kirki\Field\Checkbox_Switch(
+        [
+            'settings' => 'header_right_switch',
+            'label' => esc_html__('Header Right Info Switch ', 'kirki'),
+            'description' => esc_html__('Header Right switch', 'kirki'),
+            'section' => 'header_info',
+            'default' => 'off',
+            'choices' => [
+                'on' => esc_html__('Enable', 'kirki'),
+                'off' => esc_html__('Disable', 'kirki'),
+            ],
+        ]
+    );
     new \Kirki\Field\Text(
         [
             'settings' => 'button_text',
@@ -41,9 +68,12 @@ function header_info()
             'priority' => 10,
         ]
     );
-}
 
+}
 header_info();
+
+
+
 // Header Social logo
 function header_social_kirki()
 {
@@ -62,7 +92,7 @@ function header_social_kirki()
             'label' => esc_html__('Facebook Url', 'kirki'),
             'description' => esc_html__('The saved value will be the URL.', 'kirki'),
             'section' => 'header_social_section',
-            'default' =>'#',
+            'default' => '#',
         ]
     );
     new \Kirki\Field\Text(
@@ -71,7 +101,7 @@ function header_social_kirki()
             'label' => esc_html__('Twitter Url', 'kirki'),
             'description' => esc_html__('The saved value will be the URL.', 'kirki'),
             'section' => 'header_social_section',
-            'default' =>'#',
+            'default' => '#',
         ]
     );
     new \Kirki\Field\Text(
@@ -80,7 +110,7 @@ function header_social_kirki()
             'label' => esc_html__('Instagram Url', 'kirki'),
             'description' => esc_html__('The saved value will be the URL.', 'kirki'),
             'section' => 'header_social_section',
-            'default' =>'#',
+            'default' => '#',
         ]
     );
 }
@@ -106,6 +136,15 @@ function header_logo_kirki()
             'description' => esc_html__('The saved value will be the URL.', 'kirki'),
             'section' => 'header_logo',
             'default' => get_template_directory_uri() . '/assets/img/logo/logo.png',
+        ]
+    );
+    new \Kirki\Field\Image(
+        [
+            'settings' => 'transparent_logo',
+            'label' => esc_html__('Transparent Logo', 'kirki'),
+            'description' => esc_html__('The saved value will be the URL.', 'kirki'),
+            'section' => 'header_logo',
+            'default' => get_template_directory_uri() . '/assets/img/logo/logo-yellow.png',
         ]
     );
 }

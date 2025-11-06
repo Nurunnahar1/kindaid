@@ -1,5 +1,34 @@
 <?php
 
+function kindaid_header()
+{
+
+    $header_from_page = function_exists('tpmeta_field') ? tpmeta_field('header_from_page') : '';
+    $header_global = get_theme_mod('header_global', 'header_global_1');
+ 
+
+    if ($header_from_page == 'header_page_1') {
+        get_template_part('templates/header/header-1');
+    } elseif ($header_from_page == 'header_page_2') {
+        get_template_part('templates/header/header-2');
+    } elseif ($header_from_page == 'header_page_3') {
+        get_template_part('templates/header/header-3');
+    } else {
+        if ($header_global == 'header_global_2') {
+            get_template_part('templates/header/header-2');
+
+        } elseif ($header_global == 'header_global_3') {
+            get_template_part('templates/header/header-3');
+
+        } else {
+            get_template_part('templates/header/header-1');
+
+        }
+    }
+
+}
+
+
 //Header Logo Section
 function kindaid_logo()
 {
@@ -7,6 +36,22 @@ function kindaid_logo()
     ?>
     <a href="<?php echo home_url(); ?>"><img data-width="108" src="<?php echo esc_url($kindaid_logo_url) ?>"
             alt="<?php echo bloginfo(); ?>"></a>
+
+    <?php
+}
+//Header Transparent Logo 
+function kindaid_transparent_logo()
+{
+    $kindaid_logo_url = get_theme_mod('logo', get_template_directory_uri() . '/assets/img/logo/logo.png');
+    $kindaid_transparent_logo_url = get_theme_mod('transparent_logo', get_template_directory_uri() . '/assets/img/logo/logo-yellow.png');
+    ?>
+
+    <a href="<?php echo home_url(); ?>">
+        <img class="logo-1" data-width="108" src="<?php echo esc_url($kindaid_logo_url) ?>" alt="<?php echo bloginfo(); ?>">
+        <img class="logo-2 d-none" data-width="108" src="<?php echo esc_url($kindaid_transparent_logo_url) ?>"
+            alt="<?php echo bloginfo(); ?>">
+    </a>
+
 
 
     <?php
@@ -18,7 +63,7 @@ function kindaid_offcanvas_logo()
 {
     $kindaid_logo_url = get_theme_mod('offcanvas_logo', get_template_directory_uri() . '/assets/img/logo/logo.png');
     ?>
-    <a href="<?php echo home_url(); ?>"><img data-width="108" src="<?php echo esc_url($kindaid_logo_url) ?>"
+    <a href="<?php echo home_url(); ?>"><img data-width="108" src="<?php echo esc_url($kindaid_logo_url); ?>"
             alt="<?php echo esc_attr('logo', 'kindaid'); ?>"></a>
 
 

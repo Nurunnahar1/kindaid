@@ -54,7 +54,7 @@ $offcanvas_desc = get_theme_mod('offcanvas_desc', __(
     <?php endif; ?>
     <div class="tp-offcanvas-social">
         <h3 class="tp-offcanvas-title"><?php echo esc_html__('Follow Us', 'kindaid'); ?> </h3>
-      <?php kindaid_social(); ?>
+        <?php kindaid_social(); ?>
     </div>
 </div>
 <div class="tp-offcanvas-overlay"></div>
