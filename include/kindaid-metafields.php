@@ -10,7 +10,7 @@ function kindaid_metafields($meta_boxes)
         'priority' => 'core',
         'fields' => array(
             array(
-                'label' => esc_html__('Header Select', 'kindaid'),
+                'label' => esc_html__('Header Layout', 'kindaid'),
                 'id' => "header_from_page",
                 'type' => 'select',
                 'options' => array( 
@@ -23,7 +23,21 @@ function kindaid_metafields($meta_boxes)
                 'conditional'=>array(),
                 'default' => '',
                 'multiple' => false,
-            )
+            ),
+            array(
+                'label' => esc_html__('Footer Layout', 'kindaid'),
+                'id' => "footer_from_page",
+                'type' => 'select',
+                'options' => array( 
+                    'blank_header' => esc_html__('select Footer', 'kindaid'),
+                    'footer_page_1' => esc_html__('Footer one', 'kindaid'),
+                    'footer_page_2' => esc_html__('Footer two', 'kindaid'), 
+                ),
+                'placeholder' => esc_html__('Select Footer', 'kindaid'),
+                'conditional'=>array(),
+                'default' => '',
+                'multiple' => false,
+            ),
         ),
     );
 

@@ -5,7 +5,7 @@ function kindaid_header()
 
     $header_from_page = function_exists('tpmeta_field') ? tpmeta_field('header_from_page') : '';
     $header_global = get_theme_mod('header_global', 'header_global_1');
- 
+
 
     if ($header_from_page == 'header_page_1') {
         get_template_part('templates/header/header-1');
@@ -75,9 +75,25 @@ function kindaid_offcanvas_logo()
 function kindaid_main_menu()
 {
     wp_nav_menu(array(
-        'theme_location' => 'main_menu',
+        'theme_location' => 'main-menu',
         'container' => '',
-        'menu_class' => ''
+        'menu_class' => '',
+        'menu_id' => '',
+        'fallback_cb' => 'Kindaid_walker_nav_Menu::fallback',
+        'walker' => new Kindaid_walker_nav_Menu,
+    ));
+}
+
+//Kindaid Footer Menu
+function kindaid_footer_menu()
+{
+    wp_nav_menu(array(
+        'theme_location' => 'footer-menu',
+        'container' => '',
+        'menu_class' => '',
+        'menu_id' => '',
+        'fallback_cb' => 'Kindaid_walker_nav_Menu::fallback',
+        'walker' => new Kindaid_walker_nav_Menu,
     ));
 }
 
@@ -122,4 +138,134 @@ function kindaid_social(): void
     <?php endif; ?>
 
     <?php
+}
+
+//Footer Copyright
+
+//Header Logo Section
+function kindaid_footer_copyright()
+{
+    $footr_copyright = get_theme_mod('footr_copyright', esc_html__('© 2025 Charity. is Proudly Powered by Aqlova', 'kindaid'));
+    ?>
+
+    <p class="mb-0"><?php echo kindaid_kses($footr_copyright); ?></p>
+
+
+    <?php
+}
+
+//kindaid footer
+function kindaid_footer()
+{
+
+    $header_from_page = function_exists('tpmeta_field') ? tpmeta_field('footer_from_page') : '';
+    $header_global = get_theme_mod('footer_global', 'footer_global_1');
+
+
+    if ($header_from_page == 'footer_page_1') {
+        get_template_part('templates/footer/footer-1');
+    } elseif ($header_from_page == 'footer_page_2') {
+        get_template_part('templates/footer/footer-2');
+    
+    } else {
+        if ($header_global == 'footer_global_2') {
+            get_template_part('templates/footer/footer-2');
+
+        }  else {
+            get_template_part('templates/footer/footer-1');
+
+        }
+    } 
+
+
+}
+
+
+
+
+/**
+ * Sanitize SVG markup for front-end display.
+ *
+ * @param  string $svg SVG markup to sanitize.
+ * @return string 	  Sanitized markup.
+ */
+function kindaid_kses($tag = '')
+{
+    $allowed_html = [
+
+        'a' => [
+            'class' => [],
+            'href' => [],
+            'title' => [],
+            'target' => [],
+            'rel' => [],
+        ],
+        'b' => [],
+        'blockquote' => [
+            'cite' => [],
+        ],
+        'cite' => [
+            'title' => [],
+        ],
+        'code' => [],
+        'del' => [
+            'datetime' => [],
+            'title' => [],
+        ],
+        'div' => [
+            'class' => [],
+            'title' => [],
+            'style' => [],
+        ],
+        'dl' => [],
+        'dt' => [],
+        'em' => [],
+        'h1' => [],
+        'h2' => [],
+        'h3' => [],
+        'h4' => [],
+        'h5' => [],
+        'h6' => [],
+        'i' => [
+            'class' => [],
+        ],
+        'img' => [
+            'alt' => [],
+            'class' => [],
+            'height' => [],
+            'src' => [],
+            'width' => [],
+        ],
+        'li' => array(
+            'class' => array(),
+        ),
+        'ol' => array(
+            'class' => array(),
+        ),
+        'p' => array(
+            'class' => array(),
+        ),
+        'q' => array(
+            'cite' => array(),
+            'title' => array(),
+        ),
+        'span' => array(
+            'class' => array(),
+            'title' => array(),
+            'style' => array(),
+        ),
+        'iframe' => array(
+            'width' => array(),
+            'height' => array(),
+            'scrolling' => array(),
+            'frameborder' => array(),
+            'allow' => array(),
+            'src' => array(),
+        ),
+        'strike' => array(),
+        'br' => array(),
+        'strong' => array(),
+    ];
+
+    return wp_kses($tag, $allowed_html);
 }

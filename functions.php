@@ -37,6 +37,7 @@ if (!function_exists('kindaid_setup')):
         register_nav_menus(
             array(
                 'main-menu' => __('Main Menu', 'kindaid'),
+                'footer-menu' => __('Footer Menu', 'kindaid'),
             )
         );
 
@@ -48,11 +49,7 @@ if (!function_exists('kindaid_setup')):
          */
         add_theme_support('title-tag');
 
-        // This theme uses wp_nav_menu() in two locations.
-        register_nav_menus([
-            'main_menu' => __('Main Menu', 'kindaid'),
-        ]);
-
+        
         /*
          * Switch default core markup for search form, comment form, and comments
          * to output valid HTML5.
@@ -78,10 +75,99 @@ if (!function_exists('kindaid_setup')):
             'audio',
             'chat',
         ]);
+
+
+
+        remove_theme_support('widgets-block-editor');
     }
 endif; // kindaid_setup
 add_action('after_setup_theme', 'kindaid_setup');
 
+/**
+ * Add a sidebar.
+ */
+function kindaid_widgets()
+{
+    // footer style 01
+    register_sidebar(array(
+        'name' => __('Footer 1 : Widget 1', 'kindaid'),
+        'id' => 'footer_1_widget_1',
+        'description' => __('Widgets in this area will be shown on footer 1 :wedget 1', 'kindaid'),
+        'before_widget' => '<div id="%1$s" class="tp-footer-widget mb-40 wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".3s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="tp-footer-title mb-15">',
+        'after_title' => '</h3>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer 1 : Widget 2', 'kindaid'),
+        'id' => 'footer_1_widget_2',
+        'description' => __('Widgets in this area will be shown on footer 1 :wedget 2', 'kindaid'),
+        'before_widget' => '<div id="%1$s" class="tp-footer-widget ml-75 mb-50 wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".4s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="tp-footer-title mb-15">',
+        'after_title' => '</h3>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer 1 : Widget 3', 'kindaid'),
+        'id' => 'footer_1_widget_3',
+        'description' => __('Widgets in this area will be shown on footer 1 :wedget 3', 'kindaid'),
+        'before_widget' => '<div id="%1$s" class="tp-footer-widget tp-footer-col-2 mb-50 wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".5s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="tp-footer-title mb-15">',
+        'after_title' => '</h3>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer 1 : Widget 4', 'kindaid'),
+        'id' => 'footer_1_widget_4',
+        'description' => __('Widgets in this area will be shown on footer 1 :wedget 4', 'kindaid'),
+        'before_widget' => '<div id="%1$s" class="tp-footer-widget   mb-50 bg-position wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".6s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="tp-footer-title mb-15">',
+        'after_title' => '</h3>',
+    ));
+
+    // footer style 02
+    register_sidebar(array(
+        'name' => __('Footer 2 : Widget 1', 'kindaid'),
+        'id' => 'footer_2_widget_1',
+        'description' => __('Widgets in this area will be shown on footer 2 :wedget 1', 'kindaid'),
+        'before_widget' => '<div id="%1$s" class="tp-footer-widget mb-40 mr-70 wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".3s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="tp-footer-title mb-15">',
+        'after_title' => '</h3>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer 2 : Widget 2', 'kindaid'),
+        'id' => 'footer_2_widget_2',
+        'description' => __('Widgets in this area will be shown on footer 2 :wedget 2', 'kindaid'),
+        'before_widget' => '<div id="%1$s" class="tp-footer-widget ml-30 mb-50 wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".4s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="tp-footer-title mb-15">',
+        'after_title' => '</h3>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer 2 : Widget 3', 'kindaid'),
+        'id' => 'footer_2_widget_3',
+        'description' => __('Widgets in this area will be shown on footer 2 :wedget 3', 'kindaid'),
+        'before_widget' => '<div id="%1$s" class="tp-footer-widget ml-75 tp-footer-col-2 mb-50 wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".5s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="tp-footer-title mb-15">',
+        'after_title' => '</h3>',
+    ));
+    register_sidebar(array(
+        'name' => __('Footer 2 : Widget 4', 'kindaid'),
+        'id' => 'footer_2_widget_4',
+        'description' => __('Widgets in this area will be shown on footer 2 :wedget 4', 'kindaid'),
+        'before_widget' => '<div id="%1$s" class="tp-footer-widget ml-30  mb-50 wow fadeInUp %2$s" data-wow-duration=".9s" data-wow-delay=".6s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="tp-footer-title mb-15">',
+        'after_title' => '</h3>',
+    ));
+}
+add_action('widgets_init', 'kindaid_widgets');
+
+
+//kindaid scripts
 function kindaide_scripts()
 {
     //css
@@ -176,7 +262,11 @@ add_action('wp_enqueue_scripts', 'kindaide_scripts');
 
 
 //kindaid required files
+include_once('include/footer-contact-info.php');
+include_once('include/footer-contact-info-2.php');
+include_once('include/footer-info.php');
 include_once('include/nav-walker.php');
+include_once('include/footer-newsletter.php');
 
 if (function_exists('tpmeta_field')) {
     include_once('include/kindaid-metafields.php');

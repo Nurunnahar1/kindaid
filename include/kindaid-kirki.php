@@ -234,3 +234,52 @@ function header_offcanvas_kirki()
 }
 
 header_offcanvas_kirki();
+
+
+// Header logo
+function footer_section_kirki()
+{
+    new \Kirki\Section(
+        'footer_section',
+        [
+            'title' => esc_html__('Footer Section', 'kirki'),
+            'description' => esc_html__('Here Footer setting will place .', 'kirki'),
+            'panel' => 'kirki_panel',
+            'priority' => 160,
+        ]
+    );
+    new \Kirki\Field\Image(
+        [
+            'settings' => 'footer_bg_image',
+            'label' => esc_html__('Footer BG Image', 'kirki'),
+            'description' => esc_html__('The saved value will be the URL.', 'kirki'),
+            'section' => 'footer_section', 
+        ]
+    );
+    new \Kirki\Field\Text(
+        [
+            'settings' => 'footr_copyright',
+            'label' => esc_html__('Copyright Text', 'kirki'),
+            'section' => 'footer_section',
+            'default' => esc_html__('© 2025 Charity. is Proudly Powered by Aqlova', 'kirki'),
+            'priority' => 10,
+        ]
+    );
+    new \Kirki\Field\Select(
+        [
+            'settings' => 'footer_global',
+            'label' => esc_html__('Select Your Default Footer', 'kirki'),
+            'section' => 'footer_section',
+            'default' => 'footer_global_1',
+            'placeholder' => esc_html__('Choose a Footer', 'kirki'),
+            'choices' => [
+                'footer_global_1' => esc_html__('Footer One', 'kirki'),
+                'footer_global_2' => esc_html__('Footer Two', 'kirki'), 
+            ],
+        ]
+    );
+ 
+}
+
+footer_section_kirki();
+ 

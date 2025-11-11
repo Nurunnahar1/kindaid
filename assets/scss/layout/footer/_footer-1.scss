@@ -4,22 +4,25 @@
 /*  6.1 Footer Style
 /*----------------------------------------*/
 
-.#{$theme-prifix}-footer{
-    &-dec{
+.#{$theme-prifix}-footer {
+    &-dec {
         font-weight: 500;
         font-size: 18px;
         line-height: 144%;
         letter-spacing: -0.01em;
         color: var(--tp-common-white);
-        @media #{$lg}{
+
+        @media #{$lg} {
             margin-right: 40px;
         }
     }
-    &-social{
+
+    &-social {
         display: flex;
         align-items: center;
         gap: 6px;
-        & a{
+
+        & a {
             height: 40px;
             width: 40px;
             border-radius: 42px;
@@ -29,13 +32,15 @@
             align-items: center;
             color: var(--tp-common-white);
             flex: 0 0 auto;
-            &:hover{
+
+            &:hover {
                 background: var(--tp-theme-secondary);
                 color: var(--tp-common-black);
             }
         }
     }
-    &-title{
+
+    &-title {
         font-weight: 700;
         font-size: 18px;
         font-family: var(--tp-ff-p);
@@ -43,38 +48,46 @@
         text-transform: uppercase;
         color: var(--tp-common-white);
     }
-    &-widget{
-        @media #{$lg,$md,$sm,$xs}{
+
+    &-widget {
+        @media #{$lg,$md,$sm,$xs} {
             margin-left: 0;
         }
-        & ul{
-            & li{
+
+        & ul {
+            & li {
                 list-style: none;
-                &:not(:last-child){
+
+                &:not(:last-child) {
                     margin-bottom: 12px;
                 }
-                & a{
+
+                & a {
                     font-weight: 600;
                     font-size: 16px;
                     letter-spacing: -0.01em;
                     color: rgba(252, 248, 236, 0.8);
-                    &:hover{
+
+                    &:hover {
                         color: var(--tp-theme-secondary);
                     }
                 }
             }
         }
     }
-    &-cta{
+
+    &-cta {
         padding: 22px 20px 30px 40px;
         margin-left: -40px;
         position: relative;
         margin-right: 14px;
         z-index: 1;
-        @media #{$xl,$lg,$md,$sm,$xs}{
+
+        @media #{$xl,$lg,$md,$sm,$xs} {
             margin-left: 0;
         }
-        &::before{
+
+        &::before {
             position: absolute;
             content: "";
             border: 1px solid rgba(252, 248, 236, 0.1);
@@ -85,73 +98,97 @@
             z-index: -1;
 
         }
-        &-title{
+
+        &-title {
             font-weight: 700;
             font-size: 24px;
             line-height: 142%;
             letter-spacing: -0.02em;
             color: var(--tp-common-mulberry);
         }
-        &-link{
+
+        &-link {
             font-weight: 600;
             font-size: 16px;
             color: var(--tp-common-mulberry);
             display: flex;
-            &:hover{
+
+            &:hover {
                 color: var(--tp-common-mulberry);
             }
-            & svg{
+
+            & svg {
                 margin-right: 10px;
             }
         }
     }
-    &-copyright{
-        & p{
+
+    &-copyright {
+        & p {
             font-weight: 500;
             font-size: 15px;
             letter-spacing: -0.01em;
             color: rgba(252, 248, 236, 0.6);
-            & a{
+
+            & a {
                 color: var(--tp-common-white);
-                &:hover{
+
+                &:hover {
                     color: var(--tp-theme-secondary);
                 }
             }
         }
     }
-    &-bottom{
+
+    &-bottom {
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         padding-top: 30px;
         padding-bottom: 13px;
     }
-    &-policy{
-        & a{
-            font-weight: 500;
-            font-size: 16px;
-            letter-spacing: -0.01em;
-            color: rgba(252, 248, 236, 0.8);
-            &:hover{
-                color: var(--tp-theme-secondary);
+
+    &-policy {
+        & li {
+            list-style: none;
+            display: inline-block;
+            padding-left: 20px;
+            margin-left: 20px;
+            position: relative;
+
+            &::before {
+                position: absolute;
+                content: "";
+                border-radius: 100%;
+                background: rgba(252, 248, 236, 0.8);
+                width: 4px;
+                height: 4px;
+                top: 12px;
+                left: 3px;
             }
-            &.dvdr{
-                position: relative;
-                padding-right: 20px;
-                margin-right: 20px;
-                &::before{
-                    position: absolute;
-                    content: "";
-                    border-radius: 100%;
-                    background: rgba(252, 248, 236, 0.8);
-                    width: 4px;
-                    height: 4px;
-                    top: 8px;
-                    right: 0;
+
+            &:first-child {
+                &::before {
+                    display: none;
+                }
+            }
+
+            & a {
+                font-weight: 500;
+                font-size: 16px;
+                letter-spacing: -0.01em;
+                color: rgba(252, 248, 236, 0.8);
+
+                &:hover {
+                    color: var(--tp-theme-secondary);
                 }
             }
         }
     }
-    &-subscribe{
-        & .tp-input{
+
+    &-subscribe {
+        & .mc4wp-form-fields{
+            position: relative;
+        }
+        & .tp-input {
             border-radius: 48px;
             height: 50px;
             font-weight: 400;
@@ -159,16 +196,19 @@
             color: var(--tp-common-black);
             padding-left: 20px;
             padding-right: 135px;
-            &::placeholder{
+
+            &::placeholder {
                 font-weight: 400;
                 font-size: 16px;
                 color: var(--tp-grey-1);
             }
-            &:focus{
+
+            &:focus {
                 border: transparent;
             }
         }
-        & button{
+
+        & button {
             font-weight: 600;
             font-size: 14px;
             letter-spacing: -0.01em;
@@ -181,20 +221,23 @@
             position: absolute;
             right: 0;
             top: 0;
-            &:hover{
+
+            &:hover {
                 background: var(--tp-theme-primary);
                 color: var(--tp-common-white);
             }
         }
     }
-    &-3{
-        &-style{
+
+    &-3 {
+        &-style {
             & .tp-footer-widget {
-                @media #{$xl,$lg,$md,$sm,$xs}{
+                @media #{$xl,$lg,$md,$sm,$xs} {
                     margin-left: 0;
                     margin-right: 0;
                 }
             }
+
             & .tp-footer-cta-title {
                 font-family: var(--tp-ff-p);
                 font-weight: 500;
@@ -202,9 +245,11 @@
                 line-height: 150%;
                 color: var(--tp-common-white);
             }
+
             & .tp-footer-cta-link {
                 color: var(--tp-common-white);
-                &:hover{
+
+                &:hover {
                     color: var(--tp-theme-secondary);
                 }
             }
