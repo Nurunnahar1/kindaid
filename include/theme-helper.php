@@ -166,16 +166,16 @@ function kindaid_footer()
         get_template_part('templates/footer/footer-1');
     } elseif ($header_from_page == 'footer_page_2') {
         get_template_part('templates/footer/footer-2');
-    
+
     } else {
         if ($header_global == 'footer_global_2') {
             get_template_part('templates/footer/footer-2');
 
-        }  else {
+        } else {
             get_template_part('templates/footer/footer-1');
 
         }
-    } 
+    }
 
 
 }
@@ -268,4 +268,21 @@ function kindaid_kses($tag = '')
     ];
 
     return wp_kses($tag, $allowed_html);
+}
+
+//kindaid pagination
+function kindaid_blog_pagination()
+{
+    $pages = paginate_links(array(
+        'type' => 'array',
+        'prev_text' => __('<i class="far fa-arrow-left"></i>', 'kindaid'),
+        'next_text' => __('<i class="far fa-arrow-right"></i>', 'kindaid')
+    ));
+    if ($pages) {
+        echo '<ul>';
+        foreach ($pages as $page) {
+            echo "<li>$page</li>";
+        }
+        echo '</ul>';
+    }
 }

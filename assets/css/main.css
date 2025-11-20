@@ -1603,8 +1603,9 @@ input[type=color] {
 /*----------------------------------------*/
 .tp-pagination li {
   display: inline-block;
+  margin: 0 2px;
 }
-.tp-pagination li a {
+.tp-pagination li a, .tp-pagination li span {
   height: 50px;
   width: 50px;
   font-size: 14px;
@@ -1620,7 +1621,7 @@ input[type=color] {
   -o-transition: all 0.3s 0s ease-out;
   transition: all 0.3s 0s ease-out;
 }
-.tp-pagination li.current a {
+.tp-pagination li span {
   background-color: var(--tp-theme-primary);
   color: var(--tp-common-white);
 }
@@ -3856,7 +3857,7 @@ body .ui-tooltip {
   background: var(--tp-theme-secondary);
 }
 .tp-postbox-content, .tp-postbox-content-details {
-  padding: 0 35px 30px 35px;
+  padding: 30px 35px 30px 35px;
 }
 @media (max-width: 574.98px) {
   .tp-postbox-content, .tp-postbox-content-details {
@@ -4064,6 +4065,40 @@ body .ui-tooltip {
   box-shadow: 0 1px 1px 0 rgba(22, 18, 5, 0.08);
   padding: 35px;
 }
+.tp-widget-sidebar ul {
+  padding-left: 17px;
+}
+.tp-widget-sidebar ul li {
+  display: flex;
+  justify-content: space-between;
+  color: var(--tp-common-mulberry);
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+}
+.tp-widget-sidebar ul li::before {
+  position: absolute;
+  content: "";
+  background-color: var(--tp-common-mulberry);
+  height: 5px;
+  width: 5px;
+  border-radius: 10px;
+  top: 11px;
+  left: -13px;
+}
+.tp-widget-sidebar ul li:not(:last-child) {
+  margin-bottom: 10px;
+}
+.tp-widget-sidebar ul li a {
+  font-size: 16px;
+  color: var(--tp-common-mulberry);
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+.tp-widget-sidebar ul li a:hover {
+  color: var(--tp-theme-primary);
+}
 .tp-widget-search {
   position: relative;
 }
@@ -4089,25 +4124,6 @@ body .ui-tooltip {
   right: 30px;
   top: 20px;
   line-height: 1;
-}
-.tp-widget-cat ul {
-  padding-left: 17px;
-}
-.tp-widget-cat ul li::marker {
-  color: var(--tp-common-mulberry);
-}
-.tp-widget-cat ul li:not(:last-child) {
-  margin-bottom: 10px;
-}
-.tp-widget-cat ul li a {
-  font-size: 16px;
-  color: var(--tp-common-mulberry);
-  display: flex;
-  justify-content: space-between;
-  font-weight: 500;
-}
-.tp-widget-cat ul li a:hover {
-  color: var(--tp-theme-primary);
 }
 .tp-widget-main-title {
   font-size: 26px;

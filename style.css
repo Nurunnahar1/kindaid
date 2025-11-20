@@ -15,3 +15,9 @@ Text Domain: twentytwenty
 .admin-bar .header-sticky{
     top: 32px;
 }
+ 
+.tp-widget-sidebar.widget_search,.tp-widget-sidebar.widget_kindaid_blog_banner_widget {
+	padding: 0;
+	box-shadow: none;
+	background: none;
+}

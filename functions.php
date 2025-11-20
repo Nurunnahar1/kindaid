@@ -49,7 +49,7 @@ if (!function_exists('kindaid_setup')):
          */
         add_theme_support('title-tag');
 
-        
+
         /*
          * Switch default core markup for search form, comment form, and comments
          * to output valid HTML5.
@@ -88,6 +88,16 @@ add_action('after_setup_theme', 'kindaid_setup');
  */
 function kindaid_widgets()
 {
+    // blog sidebar
+    register_sidebar(array(
+        'name' => __('Blog Side', 'kindaid'),
+        'id' => 'blog_sidebar',
+        'description' => __('Widgets in this area will be shown on blog side', 'kindaid'),
+        'before_widget' => '<div id="%1$s" class="tp-widget-sidebar mb-20 %2$s" >',
+        'after_widget' => '</div>',
+        'before_title' => '<h3 class="tp-widget-main-title mb-25">',
+        'after_title' => '</h3>',
+    ));
     // footer style 01
     register_sidebar(array(
         'name' => __('Footer 1 : Widget 1', 'kindaid'),
@@ -265,6 +275,9 @@ add_action('wp_enqueue_scripts', 'kindaide_scripts');
 include_once('include/footer-contact-info.php');
 include_once('include/footer-contact-info-2.php');
 include_once('include/footer-info.php');
+include_once('include/blog-author.php');
+include_once('include/blog-recent-post.php');
+include_once('include/blog-banner.php');
 include_once('include/nav-walker.php');
 include_once('include/footer-newsletter.php');
 
@@ -282,3 +295,33 @@ function kindaid_kirky()
     }
 }
 add_action('init', 'kindaid_kirky');
+
+/**
+ * Generate custom search form
+ *
+ * @param string $form Form HTML.
+ * @return string Modified form HTML.
+ */
+function kindaid_sidebar_search_form($form)
+{
+    $form = '
+    <div class="tp-widget-search mb-20">
+    <form action="' . home_url('/') . '" method="get">
+        <input type="text" value="' . get_search_query() . '" name="s" placeholder="' . esc_attr__('Search for:') . '">
+        <button type="submit">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z"
+                    stroke="#121018" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M19.0004 19.0004L14.6504 14.6504" stroke="#121018" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </button>
+    </form>
+</div>
+    
+   ';
+    return $form;
+}
+add_filter('get_search_form', 'kindaid_sidebar_search_form');
+
